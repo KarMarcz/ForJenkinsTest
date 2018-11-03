@@ -45,7 +45,7 @@ public class JenkinsTest {
 
         String title = driver.getTitle();
 
-        assertThat(title).contains("Demo Guru99 Page");
+        assertThat(title).contains("tararararara");
         driver.quit();
     }
     @AfterEach
