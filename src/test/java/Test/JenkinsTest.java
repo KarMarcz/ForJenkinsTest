@@ -30,7 +30,7 @@ public class JenkinsTest {
     @BeforeEach
     public void setBrowser() {
 
-        if (Boolean.valueOf(System.getenv("JENKINS_HOME"))){
+        if (System.getenv("JENKINS_HOME") != null){
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("chrome");
             try{
