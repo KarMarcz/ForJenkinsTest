@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,7 +28,7 @@ public class JenkinsTest {
     @BeforeEach
     public void setBrowser() {
 
-        if (Boolean.valueOf(System.getenv("FROM_JENKINS"))){
+        if (true){
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("chrome");
             try{
@@ -36,7 +37,8 @@ public class JenkinsTest {
             catch (MalformedURLException e){
                 System.out.println(e.getMessage());
             }
-
+            Properties p = System.getProperties();
+            p.list(System.out);
         }
         else {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
