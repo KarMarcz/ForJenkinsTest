@@ -26,11 +26,8 @@ public class JenkinsTest {
 
     @BeforeEach
     public void setBrowser() {
-        if(System.getProperty("os.name").toLowerCase().equals("linux")) {
-            System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-            driver = new ChromeDriver();
-        }
-        else{
+
+        if (Boolean.valueOf(System.getenv("FROM_JENKINS"))){
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName("chrome");
             try{
@@ -40,6 +37,10 @@ public class JenkinsTest {
                 System.out.println(e.getMessage());
             }
 
+        }
+        else {
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+            driver = new ChromeDriver();
         }
     }
 
